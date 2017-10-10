@@ -66,6 +66,7 @@
 						<configuration>
 							<sources>
 								<source>src/banksystem</source>
+								<source>src/database</source>
 							</sources>
 						</configuration>
 					</execution>
