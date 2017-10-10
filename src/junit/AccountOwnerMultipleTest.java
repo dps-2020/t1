@@ -27,6 +27,7 @@ public class AccountOwnerMultipleTest {
 
 		String ownerIdOne = ownerOne.getId();
 		Assert.assertEquals("O1001", ownerIdOne);		
+		
 
 		AccountOwner ownerOneWrittenToDatabase = AccountOwner.get(ownerIdOne);
 
