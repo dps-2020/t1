@@ -1,57 +1,55 @@
 package junit;
 
-import static org.junit.Assert.*;
-import junit.framework.Assert;
-
 import org.junit.Test;
 
 import banksystem.PasswordManager;
+import junit.framework.Assert;
 
 public class PasswordLengthTest {
 
 	@Test
 	public void checkLessMinLength() {
 		String password = "A";
-		Assert.assertEquals("Password minimum 2 characters", PasswordManager.validate(password));
+		Assert.assertEquals("Password minimum " + PasswordManager.PASSWORD_MIN_CHARS + " characters", PasswordManager.validate(password));
 	}
 	
 	@Test
 	public void checkZeroLength() {
 		String password = "";
-		Assert.assertEquals("Password minimum 2 characters", PasswordManager.validate(password));
+		Assert.assertEquals("Password minimum " + PasswordManager.PASSWORD_MIN_CHARS + " characters", PasswordManager.validate(password));
 	}
 	
 	@Test
 	public void checkMinLength() {
-		String password = "A$";
+		String password = "A$1jesgt";
 		Assert.assertEquals("valid", PasswordManager.validate(password));
 	}
 	
 	@Test
 	public void checkGreaterMaxLength() {
-		String password = "1234567";
-		Assert.assertEquals("Password maximum 6 characters", PasswordManager.validate(password));
+		String password = "123456789123456789123";
+		Assert.assertEquals("Password maximum " + PasswordManager.PASSWORD_MAX_CHARS + " characters", PasswordManager.validate(password));
 	}
 	@Test
 	public void checkMaxLength() {
-		String password = "12345$";
+		String password = "12345$78912345678c1A";
 		Assert.assertEquals("valid", PasswordManager.validate(password));
 	}
 	@Test
 	public void checkValidLength() {
-		String password = "123$";
+		String password = "s123$aFtashklkjgdsfg";
 		Assert.assertEquals("valid", PasswordManager.validate(password));
 	}
 	
 	@Test
 	public void checkOneSpace() {
-		String password = " $";
+		String password = " $4sfgfs";
 		Assert.assertEquals("Password cannot contain space(s)", PasswordManager.validate(password));
 	}
 	
 	@Test
 	public void checkSpaceInPassword() {
-		String password = "1 $";
+		String password = "1 $dfs45";
 		Assert.assertEquals("Password cannot contain space(s)", PasswordManager.validate(password));
 	}
 
