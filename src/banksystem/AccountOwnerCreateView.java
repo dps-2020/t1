@@ -80,7 +80,7 @@ public class AccountOwnerCreateView extends JPanel {
 		passwordTextField.setMinimumSize(new Dimension(600, 400));
 		passwordTextField.setText("");
 		passwordTextField.setColumns(5);
-		passwordTextField.setBounds(211, 122, 59, 29);
+		passwordTextField.setBounds(211, 122, 230, 29);
 		passwordTextField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String password = passwordTextField.getText();
@@ -138,7 +138,7 @@ public class AccountOwnerCreateView extends JPanel {
 		clearButton.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 		errorMessageLabel = new JLabel("");
-		errorMessageLabel.setBounds(16, 155, 324, 16);
+		errorMessageLabel.setBounds(16, 155, 500, 16);
 		errorMessageLabel.setName("errorMessageLabel");
 		add(errorMessageLabel);
 
