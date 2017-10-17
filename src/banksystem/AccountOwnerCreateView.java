@@ -45,6 +45,7 @@ public class AccountOwnerCreateView extends JPanel {
 	private JTextField passwordTextField;
 	private JLabel ownerIdLabel;
 	private JLabel errorMessageLabel;
+	private JLabel successMessageLabel;
 	private JTextField accountOwnerNameTextField;
 
 	/**
@@ -110,8 +111,8 @@ public class AccountOwnerCreateView extends JPanel {
 				AccountOwner accountOwner = new AccountOwner(name,password);
 				String result = accountOwner.validate();
 				if (result.equals("valid")) {
-					getErrorMessage().setText("");
-					getErrorMessage().setVisible(false);
+					getSuccessMessage().setText("Successfully created account owner"); 							
+					getSuccessMessage().setVisible(true);
 					accountOwner.put();
 					ownerIdLabel.setText(AccountOwner.getNextId());
 				} else {
@@ -141,6 +142,11 @@ public class AccountOwnerCreateView extends JPanel {
 		errorMessageLabel.setBounds(16, 155, 500, 16);
 		errorMessageLabel.setName("errorMessageLabel");
 		add(errorMessageLabel);
+		
+		successMessageLabel = new JLabel("");
+		successMessageLabel.setBounds(16, 155, 500, 16);
+		successMessageLabel.setName("successMessageLabel");
+		add(successMessageLabel);				
 
 		JLabel accountOwnerIdLabel = new JLabel("Account Owner ID");
 		accountOwnerIdLabel.setBounds(16, 56, 191, 24);
@@ -163,6 +169,10 @@ public class AccountOwnerCreateView extends JPanel {
 
 	public JLabel getErrorMessage() {
 		return errorMessageLabel;
+	}
+	
+	public JLabel getSuccessMessage() {
+		return successMessageLabel;
 	}
 
 	public JTextField getPasswordField() {
