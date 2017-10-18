@@ -51,13 +51,17 @@ public class PasswordManager {
 				}
 			}
 		}
-		if (numberSpecialCharacters == 0) {
+		if (numberSpecialCharacters < PASSWORD_MIN_SPECIAL_CHARS) {
+			
 			return ("Password must contain at least " + PASSWORD_MIN_SPECIAL_CHARS + " special character");
-		} else if (numberAlphaNumerics == 0) {
+		} else if (numberAlphaNumerics < PASSWORD_MIN_ALPHA_NUMERIC_CHARS) {
+			
 			return ("Password must contain at least " + PASSWORD_MIN_ALPHA_NUMERIC_CHARS + " alphanumeric character");
-		} else if (numberUpperCaseCharacters == 0) {
+		} else if (numberUpperCaseCharacters < PASSWORD_MIN_UPPERCASE_CHARS) {
+			
 			return ("Password must contain at least " + PASSWORD_MIN_UPPERCASE_CHARS + " uppercase character");
-		} else if (numberLowerCaseCharacters == 0) {
+		} else if (numberLowerCaseCharacters < PASSWORD_MIN_LOWERCASE_CHARS) {
+			
 			return ("Password must contain at least " + PASSWORD_MIN_LOWERCASE_CHARS + " lowercase character");
 		} else {
 			return ("valid");

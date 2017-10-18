@@ -111,11 +111,15 @@ public class AccountOwnerCreateView extends JPanel {
 				AccountOwner accountOwner = new AccountOwner(name,password);
 				String result = accountOwner.validate();
 				if (result.equals("valid")) {
+					getErrorMessage().setText(result);
+					getErrorMessage().setVisible(false);
 					getSuccessMessage().setText("Successfully created account owner"); 							
 					getSuccessMessage().setVisible(true);
 					accountOwner.put();
 					ownerIdLabel.setText(AccountOwner.getNextId());
 				} else {
+					getSuccessMessage().setText(""); 							
+					getSuccessMessage().setVisible(false);
 					getErrorMessage().setText(result);
 					getErrorMessage().setVisible(true);
 				}
@@ -129,6 +133,7 @@ public class AccountOwnerCreateView extends JPanel {
 		clearButton.setBounds(390, 175, 76, 29);
 		clearButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				getSuccessMessage().setText("");
 				getErrorMessage().setText("");
 				passwordTextField.setText("");
 				accountOwnerNameTextField.setText("");
