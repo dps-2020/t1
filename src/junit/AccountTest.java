@@ -29,6 +29,12 @@ public class AccountTest {
 		Assert.assertEquals(Integer.class, accountIdInt.getClass());
 	}
 	
+	@Test
+	public void testAccountIdInt1() {
+		Account account=new Account();
+		Integer accountIdInt=account.getIdAsInt();
+		Assert.assertEquals(Integer.class, accountIdInt.getClass());
+	}
 	
 	@Test
 	public void testAccountId() {
@@ -81,6 +87,13 @@ public class AccountTest {
 		Assert.assertEquals("valid",account.add("100"));
 		Assert.assertEquals("150.00",account.getBalance());
 	}
+	
+	@Test
+	public void checkInvalidBalance() {
+		Account account = new Account("O1001", "Checking", "50");
+		Assert.assertEquals("Balance cannot be negative",account.add("-100"));
+	}
+	
 	
 	@Test
 	public void subMoney() {
