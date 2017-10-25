@@ -24,6 +24,13 @@ public class AccountTest {
 	}
 
 	@Test
+	public void testAccountIdInt() {
+		Integer accountIdInt=Account.getNextIdInt();
+		Assert.assertEquals(Integer.class, accountIdInt.getClass());
+	}
+	
+	
+	@Test
 	public void testAccountId() {
 
 		Account account = new Account("ownerId", "Checking", "100.00");
