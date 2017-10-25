@@ -94,6 +94,22 @@ public class AccountTest {
 		Assert.assertEquals("Balance cannot be negative",account.add("-100"));
 	}
 	
+	@Test
+	public void checkValidateErrorMessageAccountOwner() {
+		Assert.assertEquals("Invalid Account Owner ID", Account.validate("PJ", "Checking", "50"));
+	}
+	
+	@Test
+	public void checkValidateErrorMessageAccountType() {
+		database.put("O1001", "PJ");
+		Assert.assertEquals("Account Type invalid", Account.validate("O1001", "401K", "50"));
+	}
+	
+	@Test
+	public void checkValidateErrorMessageBalance() {
+		database.put("O1001", "PJ");
+		Assert.assertEquals("Balance cannot be negative", Account.validate("O1001", "Checking", "-100"));
+	}
 	
 	@Test
 	public void subMoney() {
