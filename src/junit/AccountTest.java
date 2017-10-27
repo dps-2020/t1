@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import banksystem.Account;
+import banksystem.AccountData;
 import database.Database;
 
 public class AccountTest {
@@ -103,6 +104,12 @@ public class AccountTest {
 	public void checkValidateErrorMessageAccountType() {
 		database.put("O1001", "PJ");
 		Assert.assertEquals("Account Type invalid", Account.validate("O1001", "401K", "50"));
+	}
+	
+	@Test
+	public void checkGetFormattedBalance() {
+		Account account = new Account("","","100");
+		Assert.assertEquals("$100", account.getFormattedBalance());
 	}
 	
 	@Test
