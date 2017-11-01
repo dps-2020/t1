@@ -97,11 +97,11 @@ public class Account implements Serializable {
 
 	}
 
-	public String subtract(String s) {
-		if (!validateBalance(s).equals("valid")) {
-			return (validateBalance(s));
+	public String subtract(String balance) {
+		if (!validateBalance(balance).equals("valid")) {
+			return (validateBalance(balance));
 		}
-		long amountToSubtract = Utilities.toCents(s);
+		long amountToSubtract = Utilities.toCents(balance);
 		long currentBalance = Utilities.toCents(getBalance());
 		long newBalance = currentBalance - amountToSubtract;
 		setBalance(Utilities.toMoney(newBalance));

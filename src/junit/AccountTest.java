@@ -126,9 +126,31 @@ public class AccountTest {
 	}
 	
 	@Test
+	public void subMoneyWithInvalidBalance() {
+		Account account = new Account("O1001", "Checking", "50");
+		Assert.assertEquals("Balance cannot be negative",account.subtract("-50"));
+	}
+	
+	@Test
 	public void negativeBalance() {
 		String balance = "-50";
 		Assert.assertEquals("Balance cannot be negative",Account.validateBalance(balance) );		
+	}
+	
+	@Test
+	public void setAccountTypeTest() {
+		String accountType = "checking";
+		Account account = new Account();
+		account.setAccountType(accountType);
+		Assert.assertEquals("checking", account.getAccountType());
+	}
+	
+	@Test
+	public void setAccountOwnerIdTest() {
+		String accountOwnerId = "01001";
+		Account account = new Account();
+		account.setOwnerId(accountOwnerId);
+		Assert.assertEquals("01001", account.getOwnerId());
 	}
 
 	@Test
