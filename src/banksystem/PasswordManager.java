@@ -4,7 +4,7 @@ import database.Database;
 
 public class PasswordManager {
 	
-	Database database = Database.getInstance();
+	private Database database = Database.getInstance();
 	
 	public static final int PASSWORD_MIN_CHARS = 8;
 	public static final int PASSWORD_MAX_CHARS = 20;
