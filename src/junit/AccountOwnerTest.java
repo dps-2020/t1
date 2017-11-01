@@ -20,6 +20,27 @@ public class AccountOwnerTest {
 		dataBase.eraseFile();
 		dataBase.load();
 	}
+	
+	@Test
+	public void testAccountIdInt() {
+		Integer accountOwnerIdInt=AccountOwner.getNextIdInt();
+		Assert.assertEquals(Integer.class, accountOwnerIdInt.getClass());
+	}
+	
+	@Test	
+	public void testGetNextAccountOwnerId() {
+		AccountOwner accountOwner = new AccountOwner();
+		accountOwner.put();
+		assertEquals("O1001", accountOwner.getId());		
+		assertEquals("O1002", AccountOwner.getNextId());	
+	}
+	
+	@Test
+	public void testValidateAccountOwner() {
+		AccountOwner accountOwner = new AccountOwner("Phil", "P12345$#j");
+		String validateOutput = accountOwner.validate();
+		Assert.assertEquals("valid", validateOutput);
+	}
 
 	@Test
 	public void nonExistingOwner() {
