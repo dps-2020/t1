@@ -45,8 +45,11 @@ public class AccountOwnerTest {
 		accountOwner.setName("P");
 		accountOwner.setPassword("password");
 		Assert.assertEquals("password", accountOwner.getPassword());
-		Assert.assertEquals("Name must be greater than 1 character", accountOwner.validate());		
+		Assert.assertEquals("Name must be greater than 1 character", accountOwner.validate());
+		Assert.assertEquals("Name must be greater than 1 character", accountOwner.validateName());		
+
 	}
+	
 	
 	@Test
 	public void testSetAccountOwnerPassword() {
