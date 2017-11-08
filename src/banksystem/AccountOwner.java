@@ -22,7 +22,7 @@ public class AccountOwner implements Serializable {
 
 	public String  validate() {
 		return ( validate(getName(),getPassword()) );
-	}
+	}		
 	
 	public static String validate(String name, String password) {
 		String result = validateName(name);
