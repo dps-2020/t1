@@ -27,14 +27,58 @@ public class DepositTest {
 	}
 
 	@Test
-	public void UpdateDeposit() {
+	public void invalidPasswordWhenMakingDeposit() {
+		Deposit newDeposit = new Deposit("O1001", "A1001", "100.00");
+		AccountOwner newAccountOwner = new AccountOwner("Michael", "M$09230w");
+		newAccountOwner.put();	
+		Assert.assertEquals("Invalid Password", newDeposit.updateBalance("P$2222"));
+	}
+	
+	
+	@Test
+	public void validPasswordWhenMakingDeposit() {
+		Deposit newDeposit = new Deposit("O1001", "A1001", "100.00");
+		AccountOwner newAccountOwner = new AccountOwner("Michael", "M$09230w");
+		newAccountOwner.put();	
+		Assert.assertNotEquals("Invalid Password", newDeposit.updateBalance("M$09230w"));
+	}
+	
+	@Test
+	public void invalidAccountWhenMakingDeposit() {
+		AccountOwner newAccountOwner = new AccountOwner("Michael", "M$09230w");
+		newAccountOwner.put();	
+		
+		Account newAccount = new Account("O1001", "Checking", "50.00");
+		newAccount.put();
+		
+		Deposit newDeposit = new Deposit("O1001", "A1002", "100.00");
+		newDeposit.put();
+
+		Assert.assertEquals("Invalid Account ID", newDeposit.updateBalance("M$09230w"));
+	}
+	
+	@Test
+	public void validAccountWhenMakingDeposit() {
+		AccountOwner newAccountOwner = new AccountOwner("Michael", "M$09230w");
+		newAccountOwner.put();	
+		
+		Account newAccount = new Account("O1001", "Checking", "50.00");
+		newAccount.put();
+		
+		Deposit newDeposit = new Deposit("O1001", newAccount.getId(), "100.00");
+		Assert.assertEquals("valid", newDeposit.updateBalance("M$09230w"));
+	}
+
+	@Test
+	public void updateDeposit() {
 		// Testing deposits update and calculate properly. UAT 3.1
 		Deposit newDeposit = new Deposit("O1001", "A1001", "100.00");
 		Account newAccount = new Account("O1001", "Checking", "50.00");
 		newAccount.put();
+
 		AccountOwner newAccountOwner = new AccountOwner("Michael", "M$09230w");
 		newAccountOwner.put();
-		Assert.assertEquals("Invalid Password", newDeposit.updateBalance("P$2222"));
+
 		Assert.assertEquals("valid", newDeposit.updateBalance("M$09230w"));
 		Assert.assertEquals("150.00", newAccount.getBalance());
 		newDeposit.put();
@@ -44,7 +88,7 @@ public class DepositTest {
 	}
 
 	@Test
-	public void DepositNotNegative() {
+	public void depositNotNegative() {
 		// Testing deposits do not contain a negative amount. UAT 3.2
 		Deposit deposit = new Deposit();
 		// Assert.assertEquals("valid", deposit.validateDepositAmount("-110"));
