@@ -93,24 +93,12 @@ public class Deposit implements Serializable {
 		return data.depositAmount;
 	}
 
-	public void setDepositAmount(String depositAmount) {
-		this.data.depositAmount = depositAmount;
-	}
-
-	public String getId() {
-		return id;
-	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
 
 	public static String getNextId() {
 		return (Database.getNextIdString(prefix));
-	}
-
-	public Integer getIdAsInt() {
-		return (Database.getNextIdInt(prefix));
 	}
 
 	public void put() {
